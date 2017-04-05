@@ -86,8 +86,6 @@ source $ZSH/oh-my-zsh.sh
 
 
 # My own
-alias gst="git status"
-alias gco="git checkout"
 export PATH="/usr/local/sbin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.

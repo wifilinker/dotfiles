@@ -1,0 +1,34 @@
+[user]
+	name = wifilinker
+	email = siim.halapuu@gmail.com
+[push]
+	default = current
+[merge]
+	conflictstyle = diff3
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[alias]
+  co = checkout
+  ci = commit
+  st = status -sb
+  br = branch
+  hist = log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s %C(green)[%an]\" --graph --decorate --date=short
+  histv = log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s %C(green)[%an]\" --graph --decorate --date=short --numstat
+  dc = diff --cached
+  search = log -S
+  search-source = git grep
+
+  ds = diff --staged
+  view = log -p -b --stat --no-prefix
+  fix = commit --amend --no-edit
+  restash = "!git stash; git rebase; git stash pop"
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
