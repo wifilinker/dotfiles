@@ -63,7 +63,7 @@ call neobundle#end()
 
 
 " Conf
-let mapleader = ";"
+let mapleader = ","
 
 " Syntax highlighting
 filetype plugin indent on
