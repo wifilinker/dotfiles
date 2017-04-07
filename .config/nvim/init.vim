@@ -212,6 +212,9 @@ if executable('ag')
 endif
 nnoremap <C-f> :Ag!<SPACE>
 
+" yank the current visual selection and insert it as the search term
+vnoremap <leader>f y:<C-u>Ag! "<C-r>0"<space>
+
 let g:miniBufExplSplitBelow=0
 
 " bind <Leader> K to grep word under cursor
