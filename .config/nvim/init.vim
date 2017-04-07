@@ -136,7 +136,7 @@ nmap <Nul> za
 
 " Additional root markers
 let g:ctrlp_root_markers = ['.ruby-version', 'start', '*.cabal']
-let g:ctrlp_by_filename = 1
+let g:ctrlp_by_filename = 0
 let g:ctrlp_reuse_window = 1
 
 " Better rezising for splits
