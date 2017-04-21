@@ -58,6 +58,9 @@ NeoBundle 'ternjs/tern_for_vim', { 'do': 'npm install' }
 "" Color
 NeoBundle 'chriskempson/base16-vim'
 
+"" Testing
+NeoBundle 'janko-m/vim-test'
+
 " Required:
 call neobundle#end()
 
@@ -174,9 +177,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Trim trailing whitespace on save
 autocmd FileType javascript,java,sass,ruby,coffee,haskell autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-" Substitute word under cursor
-:nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-
 " Initial markdown fold level
 let g:vim_markdown_initial_foldlevel=1
 
@@ -250,8 +250,8 @@ let g:mocha_coffee_command = "!./node_modules/mocha/bin/mocha --recursive --no-c
 
 let test#strategy = "neovim"
 " vim-test bindings
-map <silent> <Leader>t :TestNearest<CR>
-map <silent> <Leader>T :TestFile<CR>
+map <silent> <Leader>s :TestNearest<CR>
+map <silent> <Leader>t :TestFile<CR>
 map <silent> <Leader>a :TestSuite<CR>
 map <silent> <Leader>l :TestLast<CR>
 map <silent> <Leader>v :TestVisit<CR>
