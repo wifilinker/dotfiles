@@ -127,9 +127,6 @@ inoremap <C-d> <Del>
 " Other commands
 set shiftround        " < and > commands for indention
 
-" Autosave
-autocmd BufLeave,FocusLost * silent! wall
-
 set foldlevel=100
 set foldmethod=indent
 set foldlevelstart=99
@@ -192,8 +189,6 @@ set statusline+=0x%-8B          " character value
 set statusline+=%-14(%l,%c%V%)  " line, character
 set statusline+=%<%P            " file position
 
-" \ 'file': '\v\.(exe|so|dll|o|hi)$|stm_test*',
-"  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
 set wildignore+=*/tmp/*,*.so,*.o,*.hi,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 
@@ -260,6 +255,7 @@ map <silent> <Leader>v :TestVisit<CR>
 
 let g:neomake_open_list = 2
 autocmd! BufWritePost * Neomake
+let g:neomake_scss_enabled_makers = ['stylelint']
 
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
