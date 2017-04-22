@@ -146,6 +146,9 @@ nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 " Maximize split
 map <C-_> <C-w>_
 
+" Equal size to splits
+map <C-]> <C-w>=
+
 " Moving between splits
 nmap <C-h> <C-W>h
 nmap <C-j> <C-W>j
