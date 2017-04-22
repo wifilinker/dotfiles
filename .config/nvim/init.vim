@@ -221,8 +221,10 @@ set statusline+=0x%-8B          " character value
 set statusline+=%-14(%l,%c%V%)  " line, character
 set statusline+=%<%P            " file position
 
-set wildignore+=*/tmp/*,*.so,*.o,*.hi,*.swp,*.zip
+set wildignore+=*/tmp/*,*.so,*.o,*.hi,*.swp,*.zip,.DS_Store
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_show_hidden = 1
+noremap <leader>b :CtrlPBuffer<CR>
 
 " The Silver Searcher
 if executable('ag')
@@ -231,7 +233,7 @@ if executable('ag')
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g "' + g:ctrlp_custom_ignore + '"'
   endif
 
   " ag is fast enough that CtrlP doesn't need to cache
