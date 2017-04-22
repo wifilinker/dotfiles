@@ -155,6 +155,35 @@ nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-l> <C-W>l
 
+" Visual Settings
+
+let no_buffers_menu=1
+if !exists('g:not_finsh_neobundle')
+  set background=dark
+  " colorscheme base16-3024
+endif
+
+if has("gui_running")
+  if has("gui_mac") || has("gui_macvim")
+    set guifont=Menlo:h12
+    set transparency=7
+  endif
+else
+  let g:CSApprox_loaded = 1
+
+  if $COLORTERM == 'gnome-terminal'
+    set term=gnome-256color
+  else
+    if $TERM == 'xterm'
+      set term=xterm-256color
+    endif
+  endif
+endif
+
+if &term =~ '256color'
+  set t_ut=
+endif
+
 " NERDTree
 
 " Options
