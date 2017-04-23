@@ -29,6 +29,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Look & Feel
 NeoBundle 'https://github.com/vim-scripts/ScrollColors'
 NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'Yggdroot/indentLine'
 
 "Git
 NeoBundle 'airblade/vim-gitgutter'
@@ -54,9 +57,6 @@ NeoBundle 'sheerun/vim-polyglot'
 " Autocomplete
 NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 NeoBundle 'ternjs/tern_for_vim', { 'do': 'npm install' }
-
-"" Color
-NeoBundle 'chriskempson/base16-vim'
 
 "" Testing
 NeoBundle 'janko-m/vim-test'
@@ -157,11 +157,15 @@ nmap <C-l> <C-W>l
 
 " Visual Settings
 
-let no_buffers_menu=1
-if !exists('g:not_finsh_neobundle')
-  set background=dark
-  " colorscheme base16-3024
-endif
+set ruler
+set number
+
+colorscheme monokai
+let g:indentLine_color_term = 238
+
+set t_Co=256
+set guioptions=egmrti
+set gfn=Monaco\ 10
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
@@ -180,8 +184,41 @@ else
   endif
 endif
 
-if &term =~ '256color'
-  set t_ut=
+" set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+
+if exists("*fugitive#statusline")
+  set statusline+=%{fugitive#statusline()}
+endif
+
+if exists("*gutentags#statusline")
+  set statusline+=%{gutentags#statusline()}
+endif
+
+" vim-airline
+let g:airline_theme = 'base16'
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+
+if !exists('g:airline_powerline_fonts')
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+else
+  let g:airline#extensions#tabline#left_sep = ''
+  let g:airline#extensions#tabline#left_alt_sep = ''
+
+  " airline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
 endif
 
 " NERDTree
@@ -290,10 +327,6 @@ map <silent> <Leader>v :TestVisit<CR>
 let g:neomake_open_list = 2
 autocmd! BufWritePost * Neomake
 let g:neomake_scss_enabled_makers = ['stylelint']
-
-if exists("*fugitive#statusline")
-  set statusline+=%{fugitive#statusline()}
-endif
 
 " Autocomplete
 
