@@ -268,10 +268,12 @@ if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 
+  " This hides all in custom_ignore
+  " let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g "' + g:ctrlp_custom_ignore + '"'
+  "
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g "' + g:ctrlp_custom_ignore + '"'
-  endif
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_root_markers = ['start', 'package.json']
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
