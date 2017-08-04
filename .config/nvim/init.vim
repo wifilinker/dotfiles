@@ -353,3 +353,9 @@ if exists('g:plugs["tern_for_vim"]')
   autocmd FileType javascript setlocal omnifunc=tern#Complete
 endif
 
+" Fix scrolling lag because of Highlight_matching_pair called too much
+:set lazyredraw
+let loaded_matchparen = 1
+set synmaxcol=128
+syntax sync minlines=256
+
