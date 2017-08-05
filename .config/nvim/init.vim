@@ -173,8 +173,6 @@ if has("gui_running")
     set transparency=7
   endif
 else
-  let g:CSApprox_loaded = 1
-
   if $COLORTERM == 'gnome-terminal'
     set term=gnome-256color
   else
