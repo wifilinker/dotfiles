@@ -359,3 +359,4 @@ let loaded_matchparen = 1
 set synmaxcol=128
 syntax sync minlines=256
 
+set rtp+=/usr/local/opt/fzf
