@@ -34,3 +34,6 @@
   grep = auto
 [core]
 	excludesfile = /Users/siim/.gitignore_global
+	editor = nvim
+[web]
+	browser = open.
