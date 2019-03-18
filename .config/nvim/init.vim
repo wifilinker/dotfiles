@@ -29,8 +29,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Look & Feel
 NeoBundle 'https://github.com/vim-scripts/ScrollColors'
 NeoBundle 'jonathanfilip/vim-lucius'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'Yggdroot/indentLine'
 
 "Git
@@ -55,7 +53,7 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'sheerun/vim-polyglot'
 
 " Autocomplete
-NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
 "" Testing
@@ -192,33 +190,6 @@ if exists("*gutentags#statusline")
   set statusline+=%{gutentags#statusline()}
 endif
 
-" vim-airline
-let g:airline_theme = 'base16'
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-
-if !exists('g:airline_powerline_fonts')
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-else
-  let g:airline#extensions#tabline#left_sep = ''
-  let g:airline#extensions#tabline#left_alt_sep = ''
-
-  " airline symbols
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = ''
-endif
-
 " NERDTree
 
 " Options
@@ -327,13 +298,18 @@ map <silent> <Leader>v :TestVisit<CR>
 let g:neomake_open_list = 2
 autocmd! BufWritePost * Neomake
 let g:neomake_scss_enabled_makers = ['stylelint']
+let g:neomake_place_signs_at_once = 0
 
 " Autocomplete
 
-call deoplete#enable()
-let g:deoplete#enable_camel_case=1
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" Start autocompletion after 4 chars
+let g:ycm_min_num_of_chars_for_completion = 4
+let g:ycm_min_num_identifier_candidate_chars = 4
+let g:ycm_enable_diagnostic_highlighting = 0
+" Don't show YCM's preview window [ I find it really annoying ]
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+
 " " tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
