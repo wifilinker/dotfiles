@@ -33,6 +33,7 @@ NeoBundle 'Yggdroot/indentLine'
 
 "Git
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'tpope/vim-rhubarb'
 NeoBundle 'tpope/vim-fugitive'
 
 "Navigating
