@@ -158,7 +158,6 @@ nmap <C-l> <C-W>l
 set ruler
 set number
 
-colorscheme monokai
 let g:indentLine_color_term = 238
 
 set t_Co=256
